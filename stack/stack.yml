@@ -1,0 +1,113 @@
+# Use postgres/example user/password credentials
+version: '2.4'
+
+services:
+
+  db:
+    image: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      net:
+        ipv4_address: 172.18.0.2
+    restart: always
+    environment:
+      POSTGRES_USER: octoprint
+      POSTGRES_PASSWORD: octoprint
+      POSTGRES_DB: octoprint_filamentmanager
+    ports:
+      - 5432:5432
+
+  ender3v2-00:
+    build: octoprint/ender3v2
+    image: octoprint/ender3v2
+    volumes:
+      - ender3v2-00-data:/octoprint
+    devices:
+      - /dev/hub01:/dev/ttyUSB
+        #- /dev/video0:/dev/video0
+      - /dev/hub02_cam:/dev/video0
+    environment:
+      - ENABLE_MJPG_STREAMER=true
+      - MJPG_STREAMER_INPUT=-n -f 30 -r 640x480
+    networks:
+      net:
+        ipv4_address: 172.18.0.11
+    restart: always
+    ports:
+      - 3001:80
+
+  ender3v2-01:
+    build: octoprint/ender3v2
+    image: octoprint/ender3v2
+    volumes:
+      - ender3v2-01-data:/octoprint
+    devices:
+      - /dev/hub03:/dev/ttyUSB
+        #- /dev/video2:/dev/video0
+      - /dev/hub04_cam:/dev/video0
+    environment:
+      - ENABLE_MJPG_STREAMER=true
+      - MJPG_STREAMER_INPUT=-n -f 30 -r 640x480
+    networks:
+      net:
+        ipv4_address: 172.18.0.12
+    restart: always
+    ports:
+      - 3002:80
+
+        #cr10v3-00:
+        # build: octoprint/default
+        #  image: octoprint/default
+        #volumes:
+        #- cr10v3-00-data:/octoprint
+        #devices:
+        #- /dev/hub05:/dev/ttyUSB
+        #- /dev/hub06_cam:/dev/video0
+        #- /dev/video4:/dev/video0
+        #environment:
+        #- ENABLE_MJPG_STREAMER=true
+        #- MJPG_STREAMER_INPUT=-y -f 30 -r 640x480
+        #networks:
+        #net:
+        #ipv4_address: 172.18.0.13
+        #restart: always
+        #ports:
+        #- 3003:80
+
+        #cr10max-00:
+        #build: octoprint/default
+        #image: octoprint/default
+        #volumes:
+        #- cr10max-00-data:/octoprint
+        #devices:
+        #- /dev/hub07:/dev/ttyUSB
+    #  - /dev/hub08_cam:/dev/video0
+    #networks:
+    # net:
+    #   ipv4_address: 172.18.0.14
+    #restart: always
+    #ports:
+    #  - 3004:80
+
+networks:
+  net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.0.0/24
+          gateway: 172.18.0.1
+
+volumes:
+  db-data:
+    driver: local
+  ender3v2-00-data:
+    driver: local
+  ender3v2-01-data:
+    driver: local
+  cr10v3-00-data:
+    driver: local
+  cr10max-00-data:
+    driver: local
+

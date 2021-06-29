@@ -1,0 +1,13 @@
+--- uvc_video.c	2021-06-28 00:42:49.116234100 +0200
++++ ./drivers/media/usb/uvc/uvc_video.c 2021-06-28 00:44:20.647106300 +0200
+@@ -196,6 +196,10 @@
+ 
+                 ctrl->dwMaxPayloadTransferSize = bandwidth;
+         }
++        
++        if (format->flags & UVC_FMT_FLAG_COMPRESSED) {
++            ctrl->dwMaxPayloadTransferSize = 0x400;
++        }        
+ }
+ 
+ static size_t uvc_video_ctrl_size(struct uvc_streaming *stream)
