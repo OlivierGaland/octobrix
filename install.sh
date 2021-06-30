@@ -65,9 +65,8 @@ docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /va
 echo "Done !"
 echo "To finish installation :"
 echo "-> Static usb port link : Edit accordingly and copy files/99-usb-serial.rules to /etc/udev/rules.d/"
-cp ./files/99-usb-serial.rules /etc/udev/rules.d
+#cp ./files/99-usb-serial.rules /etc/udev/rules.d
 echo "-> Static video port link : Edit accordingly and copy files/00-jj-video.rules to /etc/udev/rules.d/"
-cp ./files/00-jj-video.rules /etc/udev/rules.d
+#cp ./files/00-jj-video.rules /etc/udev/rules.d
 echo "-> Stack configuration : Edit accordingly stack/stack.yml, then start it : docker-compose -f stack/stack.yml up"
 #docker-compose -f stack/stack.yml up
-

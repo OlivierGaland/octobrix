@@ -25,7 +25,6 @@ services:
       - ender3v2-00-data:/octoprint
     devices:
       - /dev/hub01:/dev/ttyUSB
-        #- /dev/video0:/dev/video0
       - /dev/hub02_cam:/dev/video0
     environment:
       - ENABLE_MJPG_STREAMER=true
@@ -44,7 +43,6 @@ services:
       - ender3v2-01-data:/octoprint
     devices:
       - /dev/hub03:/dev/ttyUSB
-        #- /dev/video2:/dev/video0
       - /dev/hub04_cam:/dev/video0
     environment:
       - ENABLE_MJPG_STREAMER=true
