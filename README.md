@@ -32,3 +32,8 @@ TODO list :
 - I'm not expert in kernel patching and while i wanted just to patch and reinstall uvc, my script end up compiling the whole kernel ! (need an expert looking on that point)
 - The uvc_video.c patch does not works on YUV only camera (the very cheap $3 camera found on aliexpress) even removing UVC_FMT_FLAG_COMPRESSED check, i'm pretty sure we can make it works with a better understanding of the code (suspecting others fields than dwMaxPayloadTransferSize need to be altered).
 - Implement auto switch on/off through PSU Control
+- Write a tutorial for custom udev rules (people knowing a little can check the /files/ directory and easily writes their own rules to map a static /dev item mapping usb hub port number) 
+
+Contact :
+
+- If you want to contact me , or give a few bucks through paypal if you find this project usefull, my email is : galand.olivier.david@gmail.com 

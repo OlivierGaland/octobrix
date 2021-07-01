@@ -68,5 +68,5 @@ echo "-> Static usb port link : Edit accordingly and copy files/99-usb-serial.ru
 #cp ./files/99-usb-serial.rules /etc/udev/rules.d
 echo "-> Static video port link : Edit accordingly and copy files/00-jj-video.rules to /etc/udev/rules.d/"
 #cp ./files/00-jj-video.rules /etc/udev/rules.d
-echo "-> Stack configuration : Edit accordingly stack/stack.yml, then start it : docker-compose -f stack/stack.yml up"
-#docker-compose -f stack/stack.yml up
+echo "-> Stack configuration : Edit accordingly stack/stack.yml, then start it : docker-compose -f stack/stack.yml up (foreground) or docker-compose -f stack/stack.yml up -d (detached)"
+#docker-compose -f stack/stack.yml up -d
