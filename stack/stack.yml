@@ -21,6 +21,12 @@ services:
   # database administrator on port 4000 for filament_manager (comment if not needed)
   dbadmin:
     image: adminer
+    environment:
+      - ADMINER_DESIGN='nette'
+      - ADMINER_DEFAULT_SERVER=db
+    networks:
+      net:
+        ipv4_address: 172.18.0.3    
     restart: always
     ports:
       - 4000:8080
