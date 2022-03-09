@@ -18,6 +18,7 @@ Tested configuration :
 - Computer : old gigabyte BRIX J1900 (GB-BXBT-19), 8Gb RAM, SSD 240Gb , Ubuntu server 20.04.2 LTS
 - Usb hub : Powered, 10 ports, Acasis
 - Usb cameras : MJPG (compressed) stream (not YUV only ! they won't work) 
+- Camera note : I went for this model (cheap and work) : https://github.com/OlivierGaland/octobrix/blob/main/doc/camera_ok-02.jpg , note that I designed for it a mount that you can fix on 2020 rails : https://cults3d.com/fr/mod%C3%A8le-3d/outil/support-camera-usb-low-cost-pour-profil-2020
 
 Installation procedure :
 
